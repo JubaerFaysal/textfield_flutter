@@ -1,4 +1,7 @@
+ //import 'dart:js_util';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +26,8 @@ class Home_Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  var arrname=['Jubaer','Faysal','Ahmed','Tanvir','Saleh','Prova'];
+  var subarr=['jubaer123@mail.com','faysal445@mail.com','ahmed887@mail.edu','tanvir@yahoo.com','saleh@11.edu','prova.it.edu'];
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home Page"),
@@ -50,14 +55,14 @@ class Home_Page extends StatelessWidget {
               icon: const Icon(Icons.settings)),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 100,
-        child: const Icon(Icons.face),
-        backgroundColor: const Color.fromARGB(255, 171, 69, 238),
-        onPressed: () {
-          mActioninBar("Floating Action Button", context);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   elevation: 100,
+      //   child: const Icon(Icons.face),
+      //   backgroundColor: const Color.fromARGB(255, 171, 69, 238),
+      //   onPressed: () {
+      //     mActioninBar("Floating Action Button", context);
+      //   },
+      // ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 0,
           items: [
@@ -85,64 +90,50 @@ class Home_Page extends StatelessWidget {
               mActioninBar("Mail Me", context);
             }
           }),
-      body: Center(
-        child: Container(
-          width: 400,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      //borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                    color: Color.fromARGB(255, 53, 223, 121),
-                    width: 2,
-                  )),
-                ),
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(255, 53, 223, 121), width: 2)),
-                ),
-              ),
-              Container(
-                height: 20,
-              ),
-              Divider(),
-              Container(
-                height: 10,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                      //borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                    color: Color.fromARGB(255, 53, 223, 121),
-                    width: 3,
-                  )),
-                ),
-              ),
-              Container(
-                height: 30,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      //borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                    color: Color.fromARGB(255, 53, 223, 121),
-                    width: 4,
-                  )),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+      
+      // body: ListView(
+      //   scrollDirection: Axis.vertical,
+      //   reverse: false,
+      //   children: [
+      //     Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text('one ',style: TextStyle(fontSize: 20,fontWeight:FontWeight.w500),),
+      //     ),
+      //     Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text( 'two ',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+      //     ),
+      //     Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text('three ',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500), ),
+      //     ),
+      //     Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Text('four ',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+      //       ),
+
+      //   ],
+      // ),
+      body: ListView.separated(
+           itemCount: arrname.length,
+             separatorBuilder: (context, index) {
+            return Divider(
+              height: 40,
+              thickness: 1,
+            );
+          },
+        itemBuilder: (context, index) {
+        return ListTile(
+            leading: CircleAvatar(radius: 27,child: Text('A'),),
+            //tileColor: Color.fromARGB(255, 99, 172, 241),
+            title: Text(arrname[index],style: TextStyle(fontSize: 25,fontWeight: FontWeight.w300),),
+            subtitle:Text(subarr[index],style: TextStyle(fontSize: 15),),
+            trailing: Icon(Icons.menu),
+//dense: false,
+          );
+      },
+      )
+     );
+      
+  }w
 }
